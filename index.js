@@ -28,6 +28,15 @@ server.get("/notes", function (req, res) {
     res.sendFile(path.join(pDir, "index.html"));
   });
 
+  server.post("/api/notes", function (req, res) {
+    let notesStored = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
+    let neoNote = req.body;
+    let neoId = savedNotes.length.toString();
+    neoNote.id = neoID;
+    notesStored.push(neoNote);
+  
+  });
+
 server.listen(port, function () {
   console.log(`Server listening on port ${port} to service requests from front end!`);
 });
