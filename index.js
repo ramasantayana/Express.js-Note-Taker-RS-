@@ -15,6 +15,10 @@ server.get("/notes", function (req, res) {
     res.sendFile(path.join(pDir, "notes.html"));
   });
 
+  server.get("/api/notes", function (req, res) {
+    res.sendFile(path.join(__dirname, "/db/db.json"));
+  });
+
 server.listen(port, function () {
   console.log(`Server listening on port ${port} to service requests from front end!`);
 });
