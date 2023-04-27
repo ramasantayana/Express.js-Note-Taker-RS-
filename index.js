@@ -32,10 +32,16 @@ server.get("/notes", function (req, res) {
     let notesStored = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
     let neoNote = req.body;
     let neoId = savedNotes.length.toString();
-    neoNote.id = neoID;
+    neoNote.id = neoId;
     notesStored.push(neoNote);
   
+    fs.writeFileSync("./db/db.json", JSON.stringify(notesStored));
+    console.log("Note saved to db.json. ");
+    res.json(notesStored);
+
   });
+
+
 
 server.listen(port, function () {
   console.log(`Server listening on port ${port} to service requests from front end!`);
