@@ -31,7 +31,7 @@ server.get("/notes", function (req, res) {
   server.post("/api/notes", function (req, res) {
     let notesStored = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
     let neoNote = req.body;
-    let neoId = savedNotes.length.toString();
+    let neoId = notesStored.length.toString();
     neoNote.id = neoId;
     notesStored.push(neoNote);
   
