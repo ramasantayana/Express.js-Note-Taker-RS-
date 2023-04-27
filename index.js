@@ -24,6 +24,10 @@ server.get("/notes", function (req, res) {
     res.json(notesStored[Number(req.params.id)]);
   });
 
+  server.get("*", function (req, res) {
+    res.sendFile(path.join(pDir, "index.html"));
+  });
+
 server.listen(port, function () {
   console.log(`Server listening on port ${port} to service requests from front end!`);
 });
